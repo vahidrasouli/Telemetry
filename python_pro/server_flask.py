@@ -1,6 +1,6 @@
 # todo: Implement Signals to notify the app whenever the relay status changes
 # todo: use web sockets to update the status display when the relay status changes
-# v.1
+# v.2
 from __future__ import print_function
 
 from flask import Flask
@@ -73,21 +73,18 @@ def api_relay_off(relay):
         print("invalid relay")
         return make_response(error_msg, 404)
 
-
 @app.route('/all_on/')
 def api_relay_all_on():
     print("Executing api_relay_all_on")
     #relay_all_on()
-    A = 2+5
+    A = 2+8
     return make_response(success_msg+ str(A), 200)
-
 
 @app.route('/all_off/')
 def api_all_relay_off():
     print("Executing api_relay_all_off")
     relay_all_off()
     return make_response(success_msg, 200)
-
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -110,6 +107,4 @@ if __name__ == "__main__":
     # On the Pi, you need to run the app using this command to make sure it
     # listens for requests outside of the device.
     # app.run(host='0.0.0.0')
-    print "vahid rasouli"
-    print "Theran"
     app.run(host='0.0.0.0', port=5000, debug=True)
